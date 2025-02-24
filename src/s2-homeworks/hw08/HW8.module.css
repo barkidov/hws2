@@ -1,23 +1,51 @@
-.item {
-}
-
-.item:last-of-type {
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
 .users {
-}
-
-.buttonsContainer {
-}
-
-.container {
+  width: 100%;
+  border-collapse: collapse;
 }
 
 .thead {
+  background: #ddd;
+  font-weight: bold;
+  text-align: left;
+}
+
+.thead tr {
+  border-bottom: 2px solid black;
+}
+
+.thead td {
+  padding: 10px;
+}
+
+.item {
+  border-bottom: 1px solid black;
+}
+
+.item td {
+  padding: 10px;
+}
+
+.item:last-of-type {
+  border-bottom: none;
 }
 
 .nameCol {
+  width: 200px;
+  text-align: left;
+  padding: 10px;
 }
 
 .ageCol {
+  width: 100px;
+  text-align: left; /* Выровнял возраст вправо */
+  padding: 10px;
 }
