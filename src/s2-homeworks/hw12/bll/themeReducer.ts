@@ -6,6 +6,8 @@ export type ThemeType = {
     themeId: number
 }
 
+
+
 export const themeReducer = (state = initState, action: ChangeThemeAction): ThemeType => { // fix any
     switch (action.type) {
         case 'SET_THEME_ID': 
@@ -14,6 +16,7 @@ export const themeReducer = (state = initState, action: ChangeThemeAction): Them
             return state
     }
 }
+
 
 export const changeThemeId = (id: number) => ({ type: 'SET_THEME_ID', id } as const)// fix any
 

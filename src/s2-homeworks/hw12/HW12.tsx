@@ -19,6 +19,7 @@ const themes = [
     {id: 3, value: 'dark'},
 ]
 
+
 const HW12 = () => {
     // взять ид темы из редакса
     const themeId = useSelector((state: AppStoreType) => state.theme.themeId);
