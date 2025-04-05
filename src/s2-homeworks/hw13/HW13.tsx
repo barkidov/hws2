@@ -8,12 +8,6 @@ import error400 from './images/400.svg'
 import error500 from './images/500.svg'
 import errorUnknown from './images/error.svg'
 
-/*
-* 1 - дописать функцию send
-* 2 - дизэйблить кнопки пока идёт запрос
-* 3 - сделать стили в соответствии с дизайном
-* */
-
 const HW13 = () => {
     const [code, setCode] = useState('')
     const [text, setText] = useState('')
@@ -37,7 +31,7 @@ const HW13 = () => {
                 setCode('Код 200!')
                 setImage(success200)
                 setInfo('')
-                setText(`${res.data.errorText}\n${res.data.info}`)
+                setText('...всё ок)') // Здесь только "всё ок)" без дополнительной информации
                 console.log(res);
             })
             .catch((e) => {
@@ -48,18 +42,17 @@ const HW13 = () => {
                     if (e.response.status === 400) {
                         setCode('Код 400!')
                         setImage(error400)
-                        setText(`${e.response.data.errorText}\n${e.response.data.info}`)
+                        setText('Ты не отправил success в body вообще!') // Краткое сообщение об ошибке
                         setInfo('')
                     } else if (e.response.status === 500) {
                         setCode('Код 500!')
                         setImage(error500)
-                        setText(`${e.response.data.errorText}\n${e.response.data.info}`)
+                        setText('Эмитация ошибки на сервере') // Краткое сообщение об ошибке сервера
                         setInfo('')
                     } else {
-                        console.log(e);
                         setCode('Error!')
                         setImage(errorUnknown)
-                        setText(`${e.message}\n${e.name}`)
+                        setText('Error') // Для null-сценария
                         setInfo('')
                     }
                 }
