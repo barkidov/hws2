@@ -1,22 +1,74 @@
 .buttonsContainer {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 30px;
 }
 
 .responseContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  padding: 20px;
+  border: 1px solid #e4e4e4;
+  border-radius: 10px;
+  background-color: #f9f9f9;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
 }
 
 .imageContainer {
+  margin-bottom: 20px;
 }
 
 .image {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
 }
 
-.textContainer{
+.textContainer {
+  margin-top: 20px;
 }
 
 .code {
+  font-size: 24px;
+  font-weight: bold;
+  color: #4caf50;
 }
 
 .text {
+  font-size: 16px;
+  color: #555555;
+  margin-top: 10px;
+  white-space: pre-wrap; /* Чтобы текст переносился */
 }
+
 .info {
+  font-size: 14px;
+  color: #999999;
+  margin-top: 10px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  background-color: #e4e4e4;
+}
+
+button:not(:disabled) {
+  background-color: #4caf50;
+  color: white;
+}
+
+button:hover:not(:disabled) {
+  background-color: #45a049;
 }
