@@ -34,12 +34,10 @@ const HW14 = () => {
         setLoading(true)
         getTechs(value)
             .then((res) => {
-                setTechs(res?.data?.techs || [])
-                setLoading(false)
                 // делает студент
-
+                setTechs(res?.data?.techs || [])
                 // сохранить пришедшие данные
-
+                setLoading(false)
                 //
             })
     }
