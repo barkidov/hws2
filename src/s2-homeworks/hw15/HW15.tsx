@@ -1,17 +1,16 @@
-import React, {useEffect, useState} from 'react'
+import {useEffect, useState} from 'react'
 import s2 from '../../s1-main/App.module.css'
 import s from './HW15.module.css'
 import axios from 'axios'
 import SuperPagination from './common/c9-SuperPagination/SuperPagination'
 import {useSearchParams} from 'react-router-dom'
 import SuperSort from './common/c10-SuperSort/SuperSort'
-import {CircularProgress} from "@mui/material";
 
 /*
 * 1 - дописать SuperPagination
 * 2 - дописать SuperSort
 * 3 - проверить pureChange тестами
-* 3 - дописать sendQuery, onChangePagination, onChangeSort в HW15
+* 3 - дописать onChangePagination, onChangeSort в HW15
 * 4 - сделать стили в соответствии с дизайном
 * 5 - добавить HW15 в HW5/pages/JuniorPlus
 * */
@@ -53,42 +52,31 @@ const HW15 = () => {
         getTechs(params)
             .then((res) => {
                 if (res) {
-                    setTechs(res.data.techs);
-
-                    setTotalCount(res.data.totalCount)
+                setTechs(res.data.techs)
+                setTotalCount(res.data.totalCount)
                 }
-
-                // делает студент
-
-                // сохранить пришедшие данные
-
-                //
-            })
-            .finally(() => {
-                setLoading(false)
             })
     }
 
-    const onChangePagination =  (newPage: number, newCount: number) => {
+    const onChangePagination = (newPage: number, newCount: number) => {
+        setPage(newPage);
+        setCount(newCount);
+        sendQuery({ page: newPage, count: newCount });
+        setSearchParams({ page: newPage.toString(), count: newCount.toString() });
         // делает студент
-
         // setPage(
         // setCount(
-
         // sendQuery(
         // setSearchParams(
-      /*  const lastPage = Math.ceil(totalCount/newCount);*/
+
         //
-        const params = {count: `${newCount}`, page: `${newPage}`};
-        setPage(newPage);
-        setCount(+newCount);
-        setSearchParams(params);
-        sendQuery(params)
-
-
     }
 
     const onChangeSort = (newSort: string) => {
+        setSort(newSort);
+        setPage(1); // сбрасываем на первую страницу при изменении сортировки
+        sendQuery({ page: 1, count, sort: newSort });
+        setSearchParams({ page: '1', count: count.toString(), sort: newSort });
         // делает студент
 
         // setSort(
@@ -98,12 +86,6 @@ const HW15 = () => {
         // setSearchParams(
 
         //
-        const params = {count: `${count}`, page: `${1}`,sort: `${newSort}`};
-        setSort(newSort);
-
-        setPage(1);
-        setSearchParams(params)
-        sendQuery(params)
     }
 
     useEffect(() => {
@@ -127,16 +109,11 @@ const HW15 = () => {
 
     return (
         <div id={'hw15'}>
+            <div className={s2.hwTitle}>Homework #15</div>
 
-
-
-    <div className={s2.hwTitle}>Homework #15</div>
-
-            <div style={{position: 'relative'}}>
             <div className={s2.hw}>
-                <div>
-                {idLoading && <div id={'hw15-loading'}  className={s.loading}><CircularProgress  size={140} /></div>}
-                    {/*sx={{position:'relative',left:'-240px'}}*/}
+                {idLoading && <div id={'hw15-loading'} className={s.loading}>Loading...</div>}
+
                 <SuperPagination
                     page={page}
                     itemsCountForPage={count}
@@ -157,8 +134,6 @@ const HW15 = () => {
                 </div>
 
                 {mappedTechs}
-                </div>
-            </div>
             </div>
         </div>
     )
